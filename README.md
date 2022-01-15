@@ -15,7 +15,7 @@ My wallet address:
 
 **0x8c7BC623085c5c0774256bF2632d58A8b2E29404**
 
-![fruit-farm-automated-bot](example.png)
+![fruit-farm-automated-bot]
 
 
 
