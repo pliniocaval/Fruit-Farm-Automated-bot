@@ -50,7 +50,7 @@ set_linux_env: true
 After that set the variable names in your system:
 
 ```
-FRUITFAR (secret Phrase)
+FRUITFARM (secret Phrase)
 PASSWD (password)
 ```
 
