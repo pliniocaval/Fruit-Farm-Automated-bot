@@ -103,7 +103,7 @@ def in_game_process():
     time.sleep(1)
     log('Planting selected Seed...', 'white')
     plant_seed()
-    time.sleep(1)
+    time.sleep(1800) #//Tempo para salvar - Prazo deifnido para save a cada 2 plantações...colhe, planta, colhe, planta e salva
     log('Saving...', 'white')
     save()
     while is_saving():
