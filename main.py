@@ -43,6 +43,7 @@ def start_game():
     login_metamask()
     log('Installing BSC Network...')
     install_bsc_network()
+    time.sleep(3) #// Inserido um tempo para concluir a configuração da rede BSC na MetaMask
     log('Starting the game...')
     tries = 0
     DRIVER.get('https://play.fruitfarm.io/')
@@ -103,7 +104,14 @@ def in_game_process():
     time.sleep(1)
     log('Planting selected Seed...', 'white')
     plant_seed()
-    time.sleep(1800) #//Tempo para salvar - Prazo deifnido para save a cada 2 plantações...colhe, planta, colhe, planta e salva
+    time.sleep(1560) #//Tempo para salvar - Prazo deifnido para save a cada 2 plantações...colhe, planta, colhe, planta e salva
+    log('Checking collectables items...', 'white')
+    collect_plant()
+    time.sleep(1)
+    log('Places available to plant: %s.' % plant_seed(), 'white')
+    time.sleep(1)
+    log('Planting selected Seed...', 'white')
+    plant_seed()
     log('Saving...', 'white')
     save()
     while is_saving():
@@ -194,7 +202,7 @@ def close_unused_tabs():
 
 
 def is_loading():
-    """Show Sunflower farmers loading modal."""
+    """Show Fruit Farm loading modal."""
     try:
         return 'loading' in xpath('//*[@id="welcome"]/h1', False).text.lower()
     except:
@@ -268,7 +276,7 @@ def install_bsc_network():
     xpath('/html/body').send_keys(Keys.CONTROL + Keys.HOME)
     xpath('//*[@id="app-content"]/div/div[1]/div/div[2]/div[1]/div/span').click()
     xpath('//*[@id="app-content"]/div/div[2]/div/button').click()
-    name = 'Polygon'
+    name = 'BSC'
     rpc_url = 'https://bsc-dataseed.binance.org/'
     chain_id = '0x38'
     symbol = 'BNB'
@@ -322,13 +330,13 @@ def multi_acc_change():
 
 
 def setup_driver():
-    """Setup start driver."""
+    """Setup start driver Chromium."""
     tries = 0
     max_tries = 5
     global DRIVER
     while not DRIVER:
         try:
-            DRIVER = webdriver.Chrome('chromedriver.exe', options=OPTIONS)
+            DRIVER = webdriver.Chrome(service=S, options=OPTIONS)
         except:
             if tries <= max_tries:
                 raise ValueError('Was not possible to mount driver.')
